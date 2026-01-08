@@ -1,16 +1,19 @@
 {
-  "domain": "ledble_ledlamp",
-  "name": "LEDBLE Led Lamp",
+  "domain": "leddmx03",
+  "name": "LEDDMX-03",
   "bluetooth": [
-      { "local_name": "LEDBLE-01" }
-    ],
-  "codeowners": ["@8none1"],
+    { "local_name": "LEDDMX-03" }
+  ],
+  "codeowners": ["@alexmlnk3"],
   "config_flow": true,
   "dependencies": ["bluetooth"],
-  "documentation": "https://github.com/8none1/ledble-ledlamp",
+  "documentation": "https://github.com/alexmlnk3/leddmx03ble-HA",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/8none1/ledble-ledlamp/issues",
-  "requirements": ["bleak-retry-connector>=1.17.1","bleak>=0.17.0"],
-  "version": "0.0.1",
+  "issue_tracker": "https://github.com/alexmlnk3/leddmx03ble-HA/issues",
+  "requirements": [
+    "bleak-retry-connector>=1.17.1",
+    "bleak>=0.17.0"
+  ],
+  "version": "0.1.0",
   "integration_type": "device"
 }

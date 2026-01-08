@@ -30,7 +30,9 @@ class DeviceData(BluetoothData):
         #LOGGER.debug("Discovered bluetooth devices, DeviceData, : %s , %s", self._discovery.address, self._discovery.name)
 
     def supported(self):
-        return self._discovery.name.lower().startswith("ledble-03")
+        name = (self._discovery.name or "").lower()
+        return name.startswith("leddmx-03")
+
 
     def address(self):
         return self._discovery.address
@@ -100,7 +102,7 @@ class LEDBLELEDLampFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                   LOGGER.debug(f"Address: {each.address()}")
                   if each.address() == self.mac:
                     self.name = each.get_device_name()
-            if self.name is None: self.name = "LEDBLE-01-x"
+            if self.name is None: self.name = "LEDDMX-03-x"
             await self.async_set_unique_id(self.mac, raise_on_progress=False)
             self._abort_if_unique_id_configured()
             return await self.async_step_validate()
@@ -238,3 +240,4 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                 }
             ), errors=errors
         )
+ConfigFlow = LEDBLELEDLampFlowHandler
