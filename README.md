@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/icon.png" width="200" />
+  <img src="mainicon.png" width="200" />
 </p>
 
 # LEDDMX-03 BLE integration for Home Assistant
