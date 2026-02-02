@@ -29,9 +29,16 @@ class DeviceData(BluetoothData):
         self._discovery = discovery_info
         #LOGGER.debug("Discovered bluetooth devices, DeviceData, : %s , %s", self._discovery.address, self._discovery.name)
 
-    def supported(self):
+    def supported(self) -> bool:
+        # На некоторых адаптерах (например, RPi3 встроенный BT) local_name может не приходить.
         name = (self._discovery.name or "").lower()
-        return name.startswith("leddmx-03")
+        if name:
+            return name.startswith("leddmx-03") or name.startswith("ledble-03")
+            
+        # Если имени нет — фильтруем по MAC-префиксу (OUI)
+        addr = (self._discovery.address or "").upper()
+        return addr.startswith("41:42:")
+
 
 
     def address(self):
